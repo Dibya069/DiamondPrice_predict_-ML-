@@ -11,9 +11,9 @@ from dataclasses import dataclass
 ## Initialize the Data Ingestion Configuration
 @dataclass
 class DataIngestionConfig:
-    train_data_path: str=os.path.join('artifacts', 'train.csv')
-    test_data_path: str=os.path.join('artifacts', 'test.csv')
-    raw_data_path: str=os.path.join('artifacts', 'raw.csv')
+    train_data_path=os.path.join('artifacts', 'train.csv')
+    test_data_path=os.path.join('artifacts', 'test.csv')
+    raw_data_path=os.path.join('artifacts', 'raw.csv')
 
 ## Create the data ingestion CLass
 class DataIngestion:
@@ -27,7 +27,7 @@ class DataIngestion:
             df = pd.read_csv(os.path.join('notebooks/data', 'train.csv'))
             logging.info('Dataset read as a pands Dataframe')
 
-            os.mkdir(os.path.dirname(self.ingestion_config.raw_data_path), exist_ok = True)
+            os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path), exist_ok = True)
             df.to_csv(self.ingestion_config.raw_data_path, index=False)
             logging.info("Raw data is created")
 
@@ -45,4 +45,3 @@ class DataIngestion:
 
         except Exception as e:
             logging.info('Exception Occured in DataIngestion Stage')
-            raise CustomException(e, sys)
