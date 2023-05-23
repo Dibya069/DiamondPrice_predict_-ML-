@@ -27,7 +27,7 @@ class DataTransformation:
             logging.info("Data Transformation Initiated")      
 
             ## Categorical col and Numerical Col
-            num_cols = ['carat', 'depth', 'table', 'x', 'y', 'z', 'price']
+            num_cols = ['carat', 'depth', 'table', 'x', 'y', 'z']
             cat_cols = ['cut', 'color', 'clarity']
 
             ## Define the coustomer raking for each categorical variable
